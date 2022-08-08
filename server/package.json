@@ -1,0 +1,35 @@
+{
+  "name": "tweeter",
+  "version": "1.0.0",
+  "description": "twitter clone",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csfarhan/tweeter.git"
+  },
+  "author": "Farhan Rahman, Porom Kamal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csfarhan/tweeter/issues"
+  },
+  "homepage": "https://github.com/csfarhan/tweeter#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.7",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19"
+  }
+}

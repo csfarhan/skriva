@@ -6,15 +6,15 @@ const app = express();
 
 // Connect database
 connectDB();
+// Parsing data as json
 app.use(express.json())
 
+// Cors init
 app.use(cors());
 
-app.get('/', (req,res) => res.send('API Running'));
-
 app.use("/user", require("./routes/userRoutes"));
+app.use("/login", require("./routes/auth"));
 app.use(express.urlencoded({ extended: false }));
-
 const PORT = process.env.PORT || 5000;
 
 

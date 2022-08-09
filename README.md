@@ -2,5 +2,5 @@
 Twitter clone
 
 # Collaborators
-Farhan Rahman
+Farhan Rahman <br/>
 Porom Kamal

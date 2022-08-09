@@ -13,8 +13,8 @@ const registerUser = asyncHandler(async (req, res)=>{
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
-    
-    // Find a user by email if exists then send error
+    try {
+        // Find a user by email if exists then send error
     const userExists = await User.findOne({email});
     if (userExists) {
         return res.status(400).send("User already exists");
@@ -42,10 +42,11 @@ const registerUser = asyncHandler(async (req, res)=>{
         email: user.email,
         token: generateToken(user._id)
     });
-    } else {
-        res.status(400)
-        throw new Error("error creating user")
     }
+    } catch (error) {
+        return res.status(400).send(error.message);
+    }
+    
     // res.status(200).json({
     //     message: 'Registering user'
     // });
@@ -70,21 +71,19 @@ const loginUser = asyncHandler(async (req, res)=>{
     try {
     // Find a user by email if exists
     // Ask about this one
-    const userExists = await User.findOne({email});
+    const userExists = await User.findOne({email: email});
     if (!userExists) {
-        return res.status(400).json({errors: 'Invalid Credentials'});
+        return res.status(400).json({errors: [{ msg: 'Invalid Credentials'}]});
     }
-
+    
     // Compare password in database to password input
-    const isMatch = await bcrypt.compare(password, userExists.password);
-
-    if(!isMatch){
-        return res.status(400).json({ errors: 'Invalid Credentials'});
+    if (await bcrypt.compare(password,userExists.passwordHash)){
+        return res.status(200).json({msg: 'Success'})
+    } else{
+        return res.status(400).json({msg: 'Invalid Credentials'})
     }
-    return res.status(200).json({ msg: 'Successfully Logged In'});
     } catch (error) {
-        console.error(error.message);
-        return res.status(400).json({errors: 'Server Error'});
+        return res.status(400).send(error.message);
     }
 });
 

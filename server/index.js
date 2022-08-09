@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cors());
 
 app.use("/user", require("./routes/userRoutes"));
-app.use("/login", require("./routes/auth"));
+app.use("/login", require("./routes/authRoutes"));
 app.use(express.urlencoded({ extended: false }));
 const PORT = process.env.PORT || 5000;
 

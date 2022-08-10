@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Tweet = require("../models/Tweet");
+const User = require("../models/User");
 
 const postTweet = asyncHandler(async (req, res)=>{
     const {text, date} = req.body;
@@ -63,18 +64,26 @@ const updateTweet = asyncHandler(async (req, res) =>{
 const likeTweet = asyncHandler(async (req, res) => {
     const {tweetId} = req.body;
 
+    const userId = req.user; 
+
     const tweet = await Tweet.findOne({_id: tweetId});
-    Tweet.updateOne({_id: tweetId}, {likes: tweet.likes + 1}, (err) => {
-        if(err){
-            res.status(400).send(err.message);
-        }else{
-            res.status(200).json({
-                msg: "Success",
-                tweetId: tweetId,
-                currentLikes: tweet.likes + 1
-            })
-        }
-    });
+
+    //Check if user already liked
+    const user = await User.findOne({_id: userId});
+    
+    if(user.likes.includes(tweetId)){
+        return res.status(222).send("Already liked");
+    }
+
+    await Tweet.updateOne({_id: tweetId}, {$inc: {likes: 1}});
+
+    await User.updateOne({_id: userId},{$push: {likes: tweetId}})
+
+    return res.status(200).json({ 
+        msg: "Success",
+        tweetId: tweetId,
+        currentLikes: tweet.likes + 1
+    })
     
 });
 
@@ -82,18 +91,21 @@ const unlikeTweet = asyncHandler(async (req, res) => {
     const {tweetId} = req.body;
 
     const tweet = await Tweet.findOne({_id: tweetId});
+    let likesAmount = Math.max(0, tweet.likes - 1);
+    const userId = req.user;
 
-    Tweet.updateOne({_id: tweetId}, {dislikes: tweet.dislikes + 1}, (err) => {
-        if(err){
-            res.status(400).send(err.message);
-        }else{
-            res.status(200).json({
-                msg: "Success",
-                tweetId: tweetId,
-                currentLikes: math.max(tweet.likes -= 1, 0)
-            })
-        }
-    });
+    const user = await User.findOne({_id: userId});
+    if(!user.likes.includes(tweetId)){
+        return res.status(222).send("Already unliked");
+    }
+
+    await Tweet.updateOne({_id: tweetId}, {likes: likesAmount});
+    await User.updateOne({_id: userId}, {$pull: {likes: tweetId}})
+    return res.status(200).json({
+        msg: "Success",
+        tweetId: tweetId,
+        currentLikes: likesAmount
+    })
 })
 
 module.exports = {

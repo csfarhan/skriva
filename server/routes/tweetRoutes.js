@@ -11,9 +11,9 @@ router.delete("/deleteTweet", auth, deleteTweet);
 
 router.put("/updateTweet", auth, updateTweet);
 
-router.put("/addLike", likeTweet);
+router.put("/likeTweet", auth, likeTweet);
 
-router.put("/addDislike", unlikeTweet);
+router.put("/unlikeTweet", auth, unlikeTweet);
 
 
 module.exports = (router);

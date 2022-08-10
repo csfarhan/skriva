@@ -50,5 +50,6 @@ const updateTweet = asyncHandler(async (req, res) =>{
 
 module.exports = {
     postTweet,
-    deleteTweet
+    deleteTweet,
+    updateTweet
 }

@@ -90,7 +90,7 @@ const unlikeTweet = asyncHandler(async (req, res) => {
             res.status(200).json({
                 msg: "Success",
                 tweetId: tweetId,
-                currentDislikes: tweet.dislikes + 1
+                currentLikes: math.max(tweet.likes -= 1, 0)
             })
         }
     });

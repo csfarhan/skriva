@@ -46,10 +46,6 @@ const registerUser = asyncHandler(async (req, res)=>{
     } catch (error) {
         return res.status(400).send(error.message);
     }
-    
-    // res.status(200).json({
-    //     message: 'Registering user'
-    // });
 });
 
 const generateToken = (id) => {
@@ -78,7 +74,13 @@ const loginUser = asyncHandler(async (req, res)=>{
     
     // Compare password in database to password input
     if (await bcrypt.compare(password,userExists.passwordHash)){
-        return res.status(200).json({msg: 'Success'})
+        return res.status(200).json({
+            _id: userExists._id,
+            firstName: userExists.firstName,
+            lastName: userExists.lastName,
+            email: userExists.email,
+            token: generateToken(userExists._id)
+        });
     } else{
         return res.status(400).json({msg: 'Invalid Credentials'})
     }

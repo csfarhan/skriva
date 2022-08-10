@@ -19,6 +19,12 @@ const UserSchema = new mongoose.Schema({
     dateOfbirth: {
         type: String,
         //required: true
+    },
+    followers: {
+        type: []
+    },
+    following: {
+        type: []
     }
 })
 

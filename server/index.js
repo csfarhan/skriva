@@ -12,8 +12,7 @@ app.use(express.json())
 // Cors init
 app.use(cors());
 
-app.use("/register", require("./routes/userRoutes"));
-app.use("/login", require("./routes/authRoutes"));
+app.use("/user", require("./routes/userRoutes"));
 app.use(express.urlencoded({ extended: false }));
 const PORT = process.env.PORT || 5000;
 

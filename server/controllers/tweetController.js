@@ -53,7 +53,7 @@ const updateTweet = asyncHandler(async (req, res) =>{
         }
         else{
             res.status(200).json({
-                msg: "sucess",
+                msg: "success",
                 tweetId: tweetId
             });
         }

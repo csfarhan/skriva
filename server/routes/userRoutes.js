@@ -11,9 +11,8 @@ check('lastName',
 check('email', 'Please include a valid email').isEmail(),
 check('password','Please enter a password with 6 or more characters').isLength({ min: 6})], registerUser);
 
-router.post("/login", [auth,[check('email', 'Please include a valid email').isEmail(),
-check('password','Please enter a password with 6 or more characters').exists()]], loginUser);
-
+router.post("/login" ,[check('email', 'Please include a valid email').isEmail(),
+check('password','Please enter a password with 6 or more characters').exists()], loginUser);
 
 
 module.exports = (router);

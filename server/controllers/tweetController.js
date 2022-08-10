@@ -96,10 +96,23 @@ const unlikeTweet = asyncHandler(async (req, res) => {
     });
 })
 
+const getTweet = asyncHandler(async (req, res) => {
+    const {tweetId} = req.body;
+
+    // Tweet object
+    const tweet = await Tweet.findOne({_id: tweetId});
+    if(!tweet){
+        return res.status(400).json({msg: 'Tweet does not exist'})
+    }
+
+    return res.status(400).json({tweet})
+})
+
 module.exports = {
     postTweet,
     deleteTweet,
     updateTweet,
     likeTweet,
-    unlikeTweet
+    unlikeTweet,
+    getTweet
 }

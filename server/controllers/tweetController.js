@@ -60,7 +60,7 @@ const updateTweet = asyncHandler(async (req, res) =>{
     });
 });
 
-const addLike = asyncHandler(async (req, res) => {
+const likeTweet = asyncHandler(async (req, res) => {
     const {tweetId} = req.body;
 
     const tweet = await Tweet.findOne({_id: tweetId});
@@ -78,11 +78,11 @@ const addLike = asyncHandler(async (req, res) => {
     
 });
 
-const addDislike = asyncHandler(async (req, res) => {
+const unlikeTweet = asyncHandler(async (req, res) => {
     const {tweetId} = req.body;
 
     const tweet = await Tweet.findOne({_id: tweetId});
-    
+
     Tweet.updateOne({_id: tweetId}, {dislikes: tweet.dislikes + 1}, (err) => {
         if(err){
             res.status(400).send(err.message);
@@ -100,6 +100,6 @@ module.exports = {
     postTweet,
     deleteTweet,
     updateTweet,
-    addLike,
-    addDislike
+    likeTweet,
+    unlikeTweet
 }

@@ -93,17 +93,19 @@ const followUser = asyncHandler(async (req, res)=>{
     const {toFollow} = req.body;
     // Init user who called a request
     const userId = req.user;
-    const toFollowUser = await User.findOne({toFollow});
+    const userCurr = await User.findOne({_id: userId});
+    const toFollowUser = await User.findOne({_id: toFollow});
 
     // Check if already followed
-    if(toFollowUser.following.indexOf(userId) > -1){
+    if(toFollowUser.followers.indexOf(userId) > -1){
         return res.status(400).json({ msg: 'Already following'});
     }
-
     // Add req.user to toFollow's followers array
     toFollowUser.followers.push(userId);
     // Add toFollow's userId to req.user's following array
-    req.user.following.push(toFollow);
+    userCurr.following.push(toFollow);
+    await User.updateOne({_id: userId}, {following: userCurr.following});
+    await User.updateOne({_id: toFollow}, {followers: toFollowUser.followers});
     return res.status(200).json({msg: 'Followed User'});
 
 });

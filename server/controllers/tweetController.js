@@ -37,18 +37,31 @@ const deleteTweet = asyncHandler(async (req, res)=>{
             res.status(400).send("Unable to delete tweet");
         }else{
             res.status(200).json({
-                msg: "sucesss",
-                tweetId: "tweetId"
+                msg: "successs",
+                tweetId: tweetId
             })
         }
     })
 })
 
 const updateTweet = asyncHandler(async (req, res) =>{
-    const {tweetId} = req.body;
+    const {tweetId, newText} = req.body;
+
+    Tweet.updateOne({_id: tweetId}, {text: newText}, (err) =>{
+        if(err){
+            res.status(400).send("Unable to update");
+        }
+        else{
+            res.status(200).json({
+                msg: "sucess",
+                tweetId: tweetId
+            });
+        }
+    });
 });
 
 module.exports = {
     postTweet,
-    deleteTweet
+    deleteTweet,
+    updateTweet
 }

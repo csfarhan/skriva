@@ -25,6 +25,9 @@ const UserSchema = new mongoose.Schema({
     },
     following: {
         type: []
+    },
+    likes: {
+        type: []
     }
 })
 

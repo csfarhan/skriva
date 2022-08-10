@@ -25,7 +25,7 @@ const registerUser = asyncHandler(async (req, res)=>{
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // create user 
-    const user = await User.create({
+    const user = new User({
         firstName,
         lastName,
         email, 
@@ -35,16 +35,17 @@ const registerUser = asyncHandler(async (req, res)=>{
 
     // If created show information
     if (user){
-        res.status(201).json({
+        await user.save();
+        return res.status(201).json({
         _id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
         token: generateToken(user._id)
-    });
+        });
     }
     } catch (error) {
-        return res.status(400).send(error.message);
+        return res.status(400).send("Could not register user.");
     }
 });
 

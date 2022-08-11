@@ -17,4 +17,6 @@ check('password','Please enter a password with 6 or more characters').exists()],
 router.put('/follow',auth, followUser);
 
 router.get('/getProfile', auth, getProfile);
+
+router.put('/update', auth, updateProfile);
 module.exports = (router);

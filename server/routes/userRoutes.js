@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
-const {registerUser, loginUser, followUser} = require("../controllers/userController")
+const {registerUser, loginUser, followUser, getProfile} = require("../controllers/userController")
 const auth = require("../middleware/auth");
 
 router.post("/",[check('firstName',
@@ -16,4 +16,7 @@ check('password','Please enter a password with 6 or more characters').exists()],
 
 router.put('/follow',auth, followUser);
 
+router.get('/getProfile', auth, getProfile);
+
+router.put('/update', auth, updateProfile);
 module.exports = (router);

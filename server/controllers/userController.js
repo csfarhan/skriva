@@ -122,8 +122,16 @@ const followUser = asyncHandler(async (req, res)=>{
 
 });
 
+const getProfile = asyncHandler(async (req, res)=>{
+    const {userId} = req.body;
+    const profile = await Profile.findOne({userId: userId});
+    return res.status(200).json(profile);
+
+});
+
 module.exports = {
     registerUser,
     loginUser,
-    followUser
+    followUser,
+    getProfile
 }

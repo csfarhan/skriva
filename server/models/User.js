@@ -9,12 +9,16 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email:{
+    username:{
         type: String,
         required: true
     },
-    passwordHash:{
-
+    email:{
+        type: String,
+        unique: true
+    },
+    password:{
+        
     },
     dateOfbirth: {
         type: String,
@@ -28,7 +32,11 @@ const UserSchema = new mongoose.Schema({
     },
     likes: {
         type: []
-    }
+    },
+    location: {
+        type: String,
+        required: true
+    },
 })
 
 module.exports = User = mongoose.model('user', UserSchema);

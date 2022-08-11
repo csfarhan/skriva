@@ -84,7 +84,7 @@ const likeTweet = asyncHandler(async (req, res) => {
     return res.status(200).json({ 
         msg: "Success",
         tweetId: tweetId,
-        currentLikes: tweet.likes.length
+        currentLikes: tweet.likes.length+1
     })
     
 });
@@ -111,7 +111,7 @@ const unlikeTweet = asyncHandler(async (req, res) => {
     return res.status(200).json({
         msg: "Success",
         tweetId: tweetId,
-        currentLikes: tweet.likes.length
+        currentLikes: tweet.likes.length-1
     })
 })
 

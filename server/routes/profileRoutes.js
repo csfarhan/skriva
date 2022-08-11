@@ -6,6 +6,4 @@ const { check, validationResult } = require('express-validator');
 
 router.put('/update', auth, updateProfile);
 
-//router.get('/id', auth, getProfile);
-
 module.exports = (router)

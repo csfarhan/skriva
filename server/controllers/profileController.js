@@ -33,4 +33,11 @@ const updateProfile = asyncHandler(async (req, res) => {
     return res.status(200).json({msg: 'Profile has been updated'});
 })
 
-module.exports = {updateProfile}
+const getProfile = asyncHandler(async (req, res) => {
+    return res.status(200);
+})
+
+module.exports = {
+    updateProfile,
+    getProfile
+}

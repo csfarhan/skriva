@@ -5,6 +5,18 @@ const User = require("../models/User");
 const Profile = require('../models/Profile');
 const { check, validationResult} = require('express-validator');
 
+
+const checksArrRegister = [
+    check('firstName','Firstname is required').not().isEmpty(),
+    check('lastName','Lastname is required').not().isEmpty(),
+    check('email', 'Please include a valid email').isEmail(),
+    check('password','Please enter a password with 6 or more characters').isLength({ min: 6})]
+
+const checksArrLogin = [
+    check('email', 'Please include a valid email').isEmail(),
+    check('password','Please enter a password with 6 or more characters').exists()]
+
+
 const registerUser = asyncHandler(async (req, res)=>{
     const errors = validationResult(req);
     const {firstName, lastName, username, email, password, dateOfBirth, location, nickname, bio, userId} = req.body;
@@ -130,29 +142,15 @@ const getProfile = asyncHandler(async (req, res)=>{
 });
 
 const updateProfile = asyncHandler(async (req, res) => {
-    const {firstname, lastname, nickname, username, email, password, bio} = req.body;
+    const {firstname, lastname, nickname, username, bio} = req.body;
     const userId = req.user;
-    if(firstname){
-        await User.updateOne({_id: userId}, {firstName: firstname});
-    }
-    if(lastname){
-        await User.updateOne({_id: userId}, {lastName: lastname});
-    }
-    if(nickname){
-        await User.updateOne({_id: userId}, {nickname: nickname});
-    }
-    if(email){
-        await User.updateOne({_id: userId}, {email: email});
-    }
-    if(bio){
-        await User.updateOne({_id: userId}, {bio: bio});
-    }
-    if(password){
-        await User.updateOne({_id: userId}, {password: password});
-    }
-    if(username){
-        await User.updateOne({_id: userId}, {username: username});
-    }
+    await User.updateOne(
+        {_id: userId}, 
+        {firstName: firstname, 
+        lastName: lastname, 
+        nickname: nickname, 
+        bio: bio, 
+        username: username});
     return res.status(200).json({msg: 'Profile has been updated'});
 })
 
@@ -161,5 +159,7 @@ module.exports = {
     loginUser,
     followUser,
     getProfile,
-    updateProfile
+    updateProfile,
+    checksArrRegister,
+    checksArrLogin
 }

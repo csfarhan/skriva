@@ -75,14 +75,16 @@ const likeTweet = asyncHandler(async (req, res) => {
         return res.status(222).send("Already liked");
     }
 
-    await Tweet.updateOne({_id: tweetId}, {$inc: {likes: 1}});
+    // This line
+    await Tweet.updateOne({_id: tweetId}, {$push: {likes: userId}});
 
     await User.updateOne({_id: userId},{$push: {likes: tweetId}})
 
+    // This line
     return res.status(200).json({ 
         msg: "Success",
         tweetId: tweetId,
-        currentLikes: tweet.likes + 1
+        currentLikes: tweet.likes.length
     })
     
 });
@@ -91,20 +93,25 @@ const unlikeTweet = asyncHandler(async (req, res) => {
     const {tweetId} = req.body;
 
     const tweet = await Tweet.findOne({_id: tweetId});
-    let likesAmount = Math.max(0, tweet.likes - 1);
     const userId = req.user;
 
     const user = await User.findOne({_id: userId});
-    if(!user.likes.includes(tweetId)){
+
+    // If present user has the tweet not liked
+    // Then it has already been unliked
+    if(user.likes.indexOf(tweetId) == -1){
         return res.status(222).send("Already unliked");
     }
 
-    await Tweet.updateOne({_id: tweetId}, {likes: likesAmount});
+    // This one
+    // From the tweet object remove the userId that liked it
+    await Tweet.updateOne({_id: tweetId},{$pull:{likes: userId}});
     await User.updateOne({_id: userId}, {$pull: {likes: tweetId}})
+    // This one
     return res.status(200).json({
         msg: "Success",
         tweetId: tweetId,
-        currentLikes: likesAmount
+        currentLikes: tweet.likes.length
     })
 })
 

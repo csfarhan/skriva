@@ -7,9 +7,11 @@ const { check, validationResult} = require('express-validator');
 
 
 const checksArrRegister = [
+    check("username", "username is required").not().isEmpty(),
     check('firstName','Firstname is required').not().isEmpty(),
     check('lastName','Lastname is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
+    check('location', 'location is required').not().isEmpty(),
     check('password','Please enter a password with 6 or more characters').isLength({ min: 6})]
 
 const checksArrLogin = [
@@ -100,7 +102,7 @@ const loginUser = asyncHandler(async (req, res)=>{
     }
     
     // Compare password in database to password input
-    if (await bcrypt.compare(password,userExists.passwordHash)){
+    if (await bcrypt.compare(password,userExists.password)){
         return res.status(200).json({
             _id: userExists._id,
             firstName: userExists.firstName,
@@ -154,6 +156,25 @@ const updateProfile = asyncHandler(async (req, res) => {
     return res.status(200).json({msg: 'Profile has been updated'});
 })
 
+const changePassword = asyncHandler(async (req, res) => {
+    const {currentPassword, newPassword} = req.body;
+    const userId=  req.user;
+
+    const user = await User.findOne({_id: userId});
+
+    //check current password matches whats in the database
+    if(await bcrypt.compare(currentPassword, user.password)){
+        const salt = await bcrypt.genSalt(10);
+        //Generate password hash for new password
+        const newPasswordHash = await bcrypt.hash(newPassword, salt);
+        user.password = newPasswordHash;
+        await user.save();
+        return res.status(200).send("Successfuly changed password");
+    }else{
+        return res.status(400).send("Incorrect password");
+    }
+})
+
 module.exports = {
     registerUser,
     loginUser,
@@ -161,5 +182,6 @@ module.exports = {
     getProfile,
     updateProfile,
     checksArrRegister,
-    checksArrLogin
+    checksArrLogin,
+    changePassword
 }

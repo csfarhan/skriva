@@ -29,10 +29,49 @@ const logout = () => {
     localStorage.removeItem('user');
 }
 
+// Follow user
+const follow = async (userData) => {
+    const response = await axios.put(API_URL + 'follow' , userData);
+    if(response.data){
+        localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data;
+}
+
+// Get profile
+const getprofile = async (userData) => {
+    const response = await axios.get(API_URL + 'getProfile' , userData);
+    if(response.data){
+        localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data;
+}
+
+// Update Profile
+const updateprofile = async (userData) => {
+    const response = await axios.put(API_URL + 'update' , userData);
+    if(response.data){
+        localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data;
+}
+
+// Change Password
+const changepassword = async (userData) => {
+    const response = await axios.put(API_URL + 'changePassword' , userData);
+    if(response.data){
+        localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data;
+}
 const authService = {
     register,
     logout,
-    login
+    login,
+    follow,
+    getprofile,
+    updateprofile,
+    changepassword
 }
 
 export default authService;

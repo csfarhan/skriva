@@ -136,6 +136,26 @@ const followUser = asyncHandler(async (req, res)=>{
 
 });
 
+const unfollowUser = asyncHandler(async (req, res)=>{
+    const {toUnfollow} = req.body;
+    // Init user who called a request
+    const userId = req.user;
+    const toUnfollowUser = await User.findOne({_id: toUnfollow});
+    const currentUser = await User.findOne({_id: userId});
+
+    // Check if 'I' don't follow toUnfollow
+    if(currentUser.followers.indexOf(toUnfollow) == -1){
+        return res.status(400).json({ msg: 'Already unfollowed'});
+    }
+
+    // Find user by id then remove 'I' follow from toUnfollow's followers
+    // and remove toUnfollow from 'I' following
+    await User.updateOne({_id: toUnfollow}, {$pull:{followers: userId}});
+    await User.updateOne({_id: userId}, {$pull:{following: toUnfollow}});
+    return res.status(200).json({msg: 'Unfollowed User'});
+
+});
+
 const getProfile = asyncHandler(async (req, res)=>{
     const {userId} = req.body;
     const profile = await Profile.findOne({userId: userId});
@@ -183,5 +203,6 @@ module.exports = {
     updateProfile,
     checksArrRegister,
     checksArrLogin,
-    changePassword
+    changePassword,
+    unfollowUser
 }

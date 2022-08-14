@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from 'react';
+import React from 'react';
 import Register from './components/Register';
 import Login from'./components/Login';
 import Home from'./components/Home';
@@ -9,11 +9,11 @@ import {ToastContainer} from 'react-toastify'
 const App = () => {
   return (
     <div>
-        <Routes>
-          <Route path='/register' element={<Register/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/' element={<Home/>}/>
-        </Routes>
+      <Routes>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/' element={<Home/>}/>
+      </Routes>
     </div>
 
   );

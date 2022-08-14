@@ -1,7 +1,6 @@
 import React from 'react'
 import 'react-datepicker/dist/react-datepicker'
 import {useState, useEffect} from 'react';
-import axios from 'axios';
 import {useSelector , useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
@@ -18,14 +17,22 @@ function Register() {
     password2: ''
   })
 
+  // Simplify information from formData
   const {firstName, lastName, username, location, email, password, password2} = formData;
+
+  // Navigate, redirects users to a different location
   const navigate = useNavigate()
+  // Dispatch calls the functions made by redux
   const dispatch = useDispatch()
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.auth
-  )
+  // useSelector returns the state of the respective reducer in this case auth
+  // It returns the states in our case because there are multiple state functionalities
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
+  // useEffect implements the following code
+  // if a change is made in the conditional array.
+  // In this case if any of those conditions are changed
+  // an error message is sent if error or success navigates the user
   useEffect(() => {
     if (isError) {
       toast.error(message)
@@ -42,11 +49,19 @@ function Register() {
   const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
   // Submitting form
+  // prevent default makes sure the refreshing 
+  // of page does not reset information in text fields
   const onSubmit = e => {
     e.preventDefault();
+    
+    // If passwords don't match then error
     if(password !== password2){
       toast.error('Passwords do not match')
-    } else {
+    } 
+    // If passwords match then userData object is created
+    // and sent to the register function which makes
+    // a post call with axios
+    else {
       const userData = {
         firstName,
         lastName,

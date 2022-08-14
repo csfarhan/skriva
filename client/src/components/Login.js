@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useSelector , useDispatch} from 'react-redux';
@@ -18,9 +18,7 @@ function Login() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
   
-    const { user, isLoading, isError, isSuccess, message } = useSelector(
-      (state) => state.auth
-    )
+    const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
 
     useEffect(() => {
       if (isError) {
@@ -47,7 +45,7 @@ function Login() {
       dispatch(login(userData))
     }
 
-    if (isLoading) {
+    if(isLoading) {
       return <Spinner />
     }
     

@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {register, reset} from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
-
+import {Link} from 'react-router-dom'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -113,6 +113,7 @@ function Register() {
         </div>
         <button type='submit'>Register</button>
       </form>
+      <p><Link to='/'>Homepage</Link> </p>
     </div>
   )
 }

@@ -1,56 +1,68 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux';
-import {useNavigate} from 'react-router-dom';
-import {logout, reset} from '../features/auth/authSlice';
-import {Link} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout, reset } from '../features/auth/authSlice';
 import './styling/home.css';
-import landing from './images/landing.png';
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {user} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
-  const onLogout = () =>{
+  const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
     navigate('/');
   }
   return (
-    <div>
-      <div className='container'>
-        <div className="innerContainer">
-          <div className='mainBox'>
-            <h1 className='signIn'>Sign in</h1>
-            <div className='textFields'>
-              <input className='textBox' type='text' placeholder='Email'></input>
+    <>
+      <div className='home-body'>
+
+        <div className='skriva'>
+          SKRIVA
+        </div>
+
+        <div className='motto'>
+          Write, don't fight.
+        </div>
+
+        <div className='signin-container'>
+
+          <div className='signin-text'>
+            Sign in
+          </div>
+          <input className='email-input'>
+          </input>
+
+          <input className='password-input'>
+          </input>
+          
+
+          <div className='forgot-password'>
+            Forgot password?
+          </div>
+
+          <div className='loginbtn'>
+
+            <div className='login-text'>
+              login
             </div>
-            <div className='textFields'>
-              <input className='textBox' type='text' placeholder='Password'></input>
-            </div>
-            <div className='center'>
-              <h6>Forgot Password?</h6>
-            </div>
-            <div className='button'>
-              <button type='submit'>Login</button>
+
+          </div>
+
+          <div className='line'>
+          </div>
+
+          <div className='signup-text'>
+            Don't have an account?
+            <div className='create-one-text'>
+            Create one!
             </div>
           </div>
+
         </div>
       </div>
-    </div>
-    /*
-    <div>
-      <h1>Homepage</h1>
-      <p>
-        {user ? (<button onClick={onLogout}>Logout</button>) : (
-          <div></div>
-        )}
-        
-      </p>
-      <p>Don't have an account? <Link to='/register'>Sign Up</Link> </p>
-      <p>Have an account? <Link to='/login'>Log in</Link> </p>
-    </div>
-    */
+    </>
   )
 }
 

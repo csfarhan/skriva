@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { logout, reset } from '../features/auth/authSlice';
 import './styling/home.css';
 
+
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

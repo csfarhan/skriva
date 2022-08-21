@@ -1,5 +1,5 @@
-# Tweeter
-Twitter clone
+# Skriva
+Twitter Inspired
 
 # Collaborators
 Farhan Rahman <br/>

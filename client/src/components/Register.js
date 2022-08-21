@@ -6,19 +6,21 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {register, reset} from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import './styling/register.css';
 
 function Register() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    username: '',
     email: '',
     password: '',
     password2: ''
   })
 
   // Simplify information from formData
-  const {firstName, lastName, username, location, email, password, password2} = formData;
+  const {firstName, lastName, username, email, password, password2} = formData;
 
   // Navigate, redirects users to a different location
   const navigate = useNavigate()
@@ -66,7 +68,6 @@ function Register() {
         firstName,
         lastName,
         username,
-        location,
         email,
         password
       }
@@ -81,6 +82,45 @@ function Register() {
   }
 
   return (
+    <div className='outer'>
+      <div className="container grid">
+        <div className='left'>
+          <h1>Sign Up</h1>
+          <form onSubmit={e => onSubmit(e)}>
+            <input className='firstName' type='text' value={firstName} name='firstName' onChange={e => onChange(e)}></input>
+            <input className='lastName' type='text' value={lastName} name='lastName' onChange={e => onChange(e)}></input>
+            <input className='userName' type='text' value={username} name='username' onChange={e => onChange(e)}></input>
+            <input className='email' type='text' value={email} name='email' onChange={e => onChange(e)}></input>
+            <input className='password1' type='text' value={password} name='password' onChange={e => onChange(e)}></input>
+            <input className='password2' type='text' value={password2} name='password2' onChange={e => onChange(e)}></input>
+            <button type='submit'>Register</button>
+          </form>
+        </div>
+        <div className="border">
+        </div>
+        <div className='right'>
+          <h1>Skriva</h1>
+          <ul className='list'>
+            <li className='item1'>
+              Write what you desire
+            </li>
+            <li className='item2'>
+              Show the world what you write
+            </li>
+            <li className='item3'>
+              See what the world is writing
+            </li>
+            <li className='item4'>
+              Save whatever you like
+            </li>
+            <li className='item5'>
+              Share whatever you like
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    /*
     <div>
       <form onSubmit={e => onSubmit(e)}>
         <div>
@@ -114,7 +154,7 @@ function Register() {
         <button type='submit'>Register</button>
       </form>
       <p><Link to='/'>Homepage</Link> </p>
-    </div>
+    </div>*/
   )
 }
 export default Register;

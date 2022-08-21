@@ -11,7 +11,6 @@ const checksArrRegister = [
     check('firstName','Firstname is required').not().isEmpty(),
     check('lastName','Lastname is required').not().isEmpty(),
     check('email', 'Please include a valid email').isEmail(),
-    check('location', 'location is required').not().isEmpty(),
     check('password','Please enter a password with 6 or more characters').isLength({ min: 6})]
 
 const checksArrLogin = [
@@ -21,7 +20,7 @@ const checksArrLogin = [
 
 const registerUser = asyncHandler(async (req, res)=>{
     const errors = validationResult(req);
-    const {firstName, lastName, username, email, password, dateOfBirth, location, nickname, bio, userId} = req.body;
+    const {firstName, lastName, username, email, password, dateOfBirth, nickname, bio, userId} = req.body;
 
     // If something is missing send error
     if(!errors.isEmpty()){
@@ -48,8 +47,7 @@ const registerUser = asyncHandler(async (req, res)=>{
         username,
         email, 
         password: hashedPassword,
-        dateOfBirth,
-        location
+        dateOfBirth
     });
 
     // Create Profile object

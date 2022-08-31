@@ -93,6 +93,7 @@ function Register() {
             <input className='email' type='text' value={email} name='email' onChange={e => onChange(e)}></input>
             <input className='password1' type='text' value={password} name='password' onChange={e => onChange(e)}></input>
             <input className='password2' type='text' value={password2} name='password2' onChange={e => onChange(e)}></input>
+            <input className='date-ofbirth' type="date" name="dateofbirth" id="dateofbirth"></input>
             <button type='submit'>Register</button>
           </form>
         </div>

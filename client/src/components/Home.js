@@ -1,20 +1,51 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { logout, reset } from '../features/auth/authSlice';
+import {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import {useSelector , useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import Spinner from '../components/Spinner';
+import {login, reset} from '../features/auth/authSlice';
 import './styling/home.css';
 
 
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
 
-  const onLogout = () => {
-    dispatch(logout());
-    dispatch(reset());
-    navigate('/');
+  const {email, password} = formData;
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess || user) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    const userData = {
+      email,
+      password,
+    }
+
+    dispatch(login(userData))
   }
+
   return (
     <>
       <div className='home-body'>
@@ -27,29 +58,23 @@ const Home = () => {
           Write, don't fight.
         </div>
 
-        <div className='signin-container'>
+        <form className='signin-container' onSubmit={e => onSubmit(e)}>
 
           <div className='signin-text'>
             Sign in
           </div>
-          <input className='email-input'>
+          <input value = {email} name='email'  className='email-input' onChange={e => onChange(e)}>
           </input>
 
-          <input className='password-input'>
+          <input value = {password} name='password' className='password-input' onChange={e => onChange(e)}>
           </input>
           
 
-          <div className='forgot-password'>
+          <div  className='forgot-password'>
             Forgot password?
           </div>
-
-          <div className='loginbtn'>
-
-            <div className='login-text'>
-              login
-            </div>
-
-          </div>
+          
+          <button type='submit'>Login</button>
 
           <div className='line'>
           </div>
@@ -61,7 +86,7 @@ const Home = () => {
             </div>
           </div>
 
-        </div>
+        </form>
       </div>
     </>
   )

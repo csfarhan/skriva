@@ -4,10 +4,10 @@ import {useState, useEffect} from 'react';
 import {useSelector , useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
-import {register, reset} from '../features/auth/authSlice';
-import Spinner from '../components/Spinner';
+import {register, reset} from '../../features/auth/authSlice';
+import Spinner from '../Spinner/Spinner';
 import {Link} from 'react-router-dom';
-import './styling/register.css';
+import './register.css';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -73,8 +73,6 @@ function Register() {
       }
       dispatch(register(userData))
     }
-
-    
   }
 
   if(isLoading){

@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom';
 import {useSelector , useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
-import Spinner from '../components/Spinner';
-import {login, reset} from '../features/auth/authSlice';
-import './styling/home.css';
+import Spinner from '../Spinner/Spinner';
+import {login, reset} from '../../features/auth/authSlice';
+import './home.css';
 
 
 const Home = () => {
@@ -30,7 +30,7 @@ const Home = () => {
       navigate('/')
     }
 
-    dispatch(reset())
+    dispatch(reset()) //Maybe fix the reset to be somethihng else, as its a confusing workflow.
   }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
@@ -74,7 +74,7 @@ const Home = () => {
             Forgot password?
           </div>
           
-          <button type='submit'>Login</button>
+          <button type='submit' className='loginbtn'>Login</button>
 
           <div className='line'>
           </div>

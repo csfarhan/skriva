@@ -92,7 +92,6 @@ html, body {
     position: absolute;
     width: 370px;
     height: 62px;
-    left: 139px;
     top: 178px;
 
     background: #EDE3E9;
@@ -114,7 +113,6 @@ html, body {
     position: absolute;
     width: 370px;
     height: 62px;
-    left: 139px;
     top: 272px;
 
     background: #EDE3E9;
@@ -143,11 +141,10 @@ html, body {
 
 .loginbtn{
     box-sizing: border-box;
-
-    position: relative;
+    position: absolute;
     width: 140px;
     height: 60px;
-    top: 60px;
+    top: 410px;
     justify-content: center;
     align-items: center;
     display: flex;

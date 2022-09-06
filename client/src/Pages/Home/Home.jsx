@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {useSelector , useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../../components/Spinner/Spinner';
 import {login, reset} from '../../features/auth/authSlice';
 import './home.css';
 
@@ -27,10 +27,10 @@ const Home = () => {
     }
 
     if (isSuccess || user) {
-      navigate('/')
+      navigate('/dashboard')
     }
 
-    dispatch(reset()) //Maybe fix the reset to be somethihng else, as its a confusing workflow.
+    dispatch(reset())
   }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});

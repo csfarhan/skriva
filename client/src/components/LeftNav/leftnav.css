@@ -1,0 +1,98 @@
+:root{
+    --blackish: #2c2c34 ;
+    --pinkish: #9a87ab;
+    --whitish: #EBC3DB;
+    --whitish-blue: #D8d8f6;
+}
+
+a, a:hover{
+    color:currentColor ;
+}
+
+.sidenav-body{
+    position:sticky;
+    height: 100vh;
+    background-color: var(--blackish);
+    margin-right: 160px;
+}
+
+.nav-items{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 60px;
+    color: var(--pinkish);
+}
+
+.welcome-text{
+    order:0;
+    position: relative;
+    flex-shrink: 0;
+    width: 457px;
+    height: 134px;
+    left: 65px;
+    top: 20px;
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 67px;
+
+    color: #FFFFFF;
+}
+
+.navbar-username{
+    font-weight: bold;
+}
+
+.profile-option{
+    position: relative;
+    order: 1;
+    display: flex;
+    top: 80px;
+    flex-shrink: 0;
+    left: 120px;
+}
+
+.feed-option{
+    position: relative;
+    order: 2;
+    display: flex;
+    top: 80px;
+    flex-shrink: 0;
+    left: 120px;
+}
+
+.explore-option{
+    position: relative;
+    order: 3;
+    display: flex;
+    top: 80px;
+    flex-shrink: 0;
+    left: 120px;
+}
+
+.profile-text{
+    position: absolute;
+    top: 5px;
+    left: 100px
+}
+
+.feed-text{
+    position: absolute;
+}
+
+
+.demoText{
+    font-size: larger;
+    color: aqua;
+    height: 100vh;
+    grid-area: main;
+    order: 1;
+}
+
+

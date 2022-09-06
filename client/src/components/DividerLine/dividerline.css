@@ -1,0 +1,46 @@
+.bottom-arrow-line{
+    position: absolute;
+    width: 109px;
+    height: 0px;
+    left: 563px;
+    top: 98vh;
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-bottom: 40px solid white;
+}
+
+.top-arrow-line{
+    position: absolute;
+    width: 109px;
+    height: 0px;
+    left: 562px;
+    top: 0vh;
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    
+    border-top: 40px solid white;
+}
+
+.leftnav-line{
+    position: absolute;
+    width: 5px;
+    height: auto;
+    min-height: 100vh !important;
+    left: 580px;
+    border-bottom: 100vh solid white;
+    overflow-y: scroll;
+}
+
+.divider-line{
+    position: relative;
+    display: flex;
+    height:100vh;
+    width: auto;
+    top: 0px;
+    left: -700px;
+}

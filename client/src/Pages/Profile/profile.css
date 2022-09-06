@@ -1,0 +1,32 @@
+:root{
+    --blackish: #2c2c34 ;
+    --pinkish: #9a87ab;
+    --whitish: #EBC3DB;
+    --whitish-blue: #D8d8f6;
+}
+
+.profile-body{
+    background-color: var(--blackish);
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.side-nav{
+    width: auto;
+    height: auto;
+    order: 0;
+}
+
+.div-line{
+    order: 1;
+    height: 100vh;
+}
+
+.demoText{
+    font-size: larger;
+    color: aqua;
+    height: auto;
+    grid-area: main;
+    order: 2;
+}

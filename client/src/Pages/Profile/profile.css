@@ -23,6 +23,12 @@
     height: 100vh;
 }
 
+.user-icon-profile{
+    position: relative;
+    order: 2;
+    top: 33px;
+}
+
 .demoText{
     font-size: larger;
     color: aqua;

@@ -1,0 +1,9 @@
+.user-icon{
+    width: 170px;
+    height: 170px;
+}
+
+.user-icon img{
+    width: 100%;
+    height: auto;
+}

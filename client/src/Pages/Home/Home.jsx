@@ -63,14 +63,19 @@ const Home = () => {
           <div className='signin-text'>
             Sign in
           </div>
-          <input value = {email} name='email'  className='email-input' onChange={e => onChange(e)}>
-          </input>
 
-          <input value = {password} name='password' className='password-input' onChange={e => onChange(e)}>
-          </input>
+          <div className = "input-cont">
+            <input type = "email" value = {email} name = "email" className='email-input' placeholder='  ' onChange={e => onChange(e)}/>
+            <label className = "email-lbl" htmlFor='email-input'>Email</label>
+
+            <input type = "password" value = {password} name='password' className='password-input' placeholder='  ' onChange={e => onChange(e)}/>
+            <label className = "password-lbl" htmlFor='password-input'>Password</label>
+          </div>
+
+          
           
 
-          <div  className='forgot-password'>
+          <div className='forgot-password'>
             Forgot password?
           </div>
           

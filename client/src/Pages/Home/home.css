@@ -83,20 +83,45 @@ html, body {
     color: #2C2C34;
 }
 
+.input-cont{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    gap: 30px;
+    top: 18vh;
+    align-items: center;
+    width: 100%;
+}
+
 .email-input{
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Lato';
     font-style: normal;
     box-sizing: border-box;
+    text-indent: 10px;
 
-    position: absolute;
+
     width: 370px;
     height: 62px;
-    top: 178px;
 
     background: #EDE3E9;
     border: 6px solid var(--blackish);
     border-radius: 20px;
+}
+
+.email-lbl{
+    position: absolute;
+    font-size: 20px;
+    font-family: 'Lato';
+    font-style: normal;
+    box-sizing: border-box;
+    left: 160px;
+    top: 12px;
+}
+
+.email-input:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
 }
 
 .email-input:focus{
@@ -109,23 +134,36 @@ html, body {
     font-family: 'Lato';
     font-style: normal;
     box-sizing: border-box;
+    text-indent: 10px;
 
-    position: absolute;
     width: 370px;
     height: 62px;
-    top: 272px;
 
     background: #EDE3E9;
     border: 6px solid var(--blackish);
     border-radius: 20px;
 }
 
+.password-lbl{
+    position: absolute;
+    font-size: 20px;
+    font-family: 'Lato';
+    font-style: normal;
+    box-sizing: border-box;
+    left: 160px;
+    top: 105px;
+}
+
+
 .password-input:focus{
     outline: none !important;
     border: 5px solid var(--blackish);
 }
 
-
+.password-input:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
+}
 
 .forgot-password{
     position: absolute;

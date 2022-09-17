@@ -1,0 +1,20 @@
+:root{
+    --blackish: #2c2c34 ;
+    --pinkish: #9a87ab;
+    --whitish: #EBC3DB;
+    --whitish-blue: #D8d8f6;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.demoPage{
+    background-image: url("https://i.stack.imgur.com/GLuVN.png");
+}
+
+.dashboard-body{
+    height: 100vh;
+    background-color: var(--blackish);
+}

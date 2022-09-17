@@ -94,8 +94,8 @@ function Register() {
             <label className='username-lbl' htmlFor='userName'>Username</label>
 
 
-            <input placeholder='  ' className='email' type='text' value={email} name='email' onChange={e => onChange(e)}></input>
-            <label className='email-lbl' htmlFor='email'>Email</label>
+            <input placeholder='  ' className='email-reg' type='text' value={email} name='email' onChange={e => onChange(e)}></input>
+            <label className='emailreg-lbl' htmlFor='email'>Email</label>
 
 
             <input placeholder='  'className='password1' type='text' value={password} name='password' onChange={e => onChange(e)}></input>

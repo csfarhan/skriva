@@ -87,7 +87,7 @@ h1{
     border-radius: 20px;
 }
 
-.email{
+.email-reg{
     box-sizing: border-box;
 
     position: absolute;
@@ -216,7 +216,7 @@ h1{
 }
 
 
-.email-lbl{
+.emailreg-lbl{
     box-sizing: border-box;
 
     position: absolute;
@@ -228,11 +228,11 @@ h1{
     font-family: 'Lato';
     font-size:20px;
 }
-.email:focus + label, input:not(:placeholder-shown) + label{
+.email-reg:focus + label, input:not(:placeholder-shown) + label{
     transform: translate(-0.3em,-0.5em);
     font-size: 15px;
 }
-.email:focus{
+.email-reg:focus{
     outline: none !important;
     border: 5px solid var(--blackish);
 }

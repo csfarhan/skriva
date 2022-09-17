@@ -5,7 +5,7 @@
     --whitish-blue: #D8d8f6;
 }
 
-html {
+html, body{
     background-color: var(--blackish);
 }
 .container{
@@ -19,15 +19,14 @@ html {
     background: var(--pinkish);
     border-radius: 25px;
 }
-
-.grid{
-    display: grid;
-    grid-template-columns: 50fr 0.3fr 50fr;
+.container{
+    display: flex;
 }
 .left{
+    flex: 1;
 }
 .right{
-    padding-left:30px;
+    flex: 1;
 }
 h1{
     position: absolute;
@@ -130,28 +129,174 @@ h1{
     border-radius: 20px;
 }
 
-.dateofbirth{
+.date-ofbirth{
     box-sizing: border-box;
 
     position: absolute;
     width: 370px;
     height: 62px;
     left: 93px;
-    top: 560px;
+    top: 545px;
 
     background: #EDE3E9;
     border: 3px solid #2C2C34;
     border-radius: 20px;
 }
+.register-cont{
+    display:flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
 
+
+.firstName-lbl{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 175px;
+    height: 62px;
+    left: 110px;
+    top: 192px;
+    font-style:normal;
+    font-family: 'Lato';
+    font-size:20px;
+}
+.firstName:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
+}
+.firstName:focus{
+    outline: none !important;
+    border: 5px solid var(--blackish);
+}
+
+
+.lastName-lbl{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 175px;
+    height: 62px;
+    left: 305px;
+    top: 192px;
+    font-style:normal;
+    font-family: 'Lato';
+    font-size:20px;
+}
+.lastName:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
+}
+.lastName:focus{
+    outline: none !important;
+    border: 5px solid var(--blackish);
+}
+
+
+.username-lbl{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 175px;
+    height: 62px;
+    left: 110px;
+    top: 265px;
+    font-style:normal;
+    font-family: 'Lato';
+    font-size:20px;
+}
+.userName:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
+}
+.userName:focus{
+    outline: none !important;
+    border: 5px solid var(--blackish);
+}
+
+
+.email-lbl{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 175px;
+    height: 62px;
+    left: 110px;
+    top: 340px;
+    font-style:normal;
+    font-family: 'Lato';
+    font-size:20px;
+}
+.email:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
+}
+.email:focus{
+    outline: none !important;
+    border: 5px solid var(--blackish);
+}
+
+.register{
+    margin-top:-45px;
+}
 .list{
     padding-top:120px;
+}
+
+
+
+.password1-lbl{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 175px;
+    height: 62px;
+    left: 110px;
+    top: 413px;
+    font-style:normal;
+    font-family: 'Lato';
+    font-size:20px;
+}
+.password1:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
+}
+.password1:focus{
+    outline: none !important;
+    border: 5px solid var(--blackish);
+}
+
+
+.password2-lbl{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 175px;
+    height: 62px;
+    left: 110px;
+    top: 485px;
+    font-style:normal;
+    font-family: 'Lato';
+    font-size:20px;
+}
+.password2:focus + label, input:not(:placeholder-shown) + label{
+    transform: translate(-0.3em,-0.5em);
+    font-size: 15px;
+}
+.password2:focus{
+    outline: none !important;
+    border: 5px solid var(--blackish);
 }
 
 input:focus{
     outline: none !important;
     border: 3px solid #2C2C34;
 }
+
+
+
+
 input{
     font-size: 20px;
     font-family: 'Lato';
@@ -179,7 +324,6 @@ li{
 border{
     background-color: #2C2C34;
 }
-
 button {
     position: absolute;
     top: 681px;
@@ -208,3 +352,5 @@ button {
   button:active {
     transform: translateY(-1px);
   }
+
+  

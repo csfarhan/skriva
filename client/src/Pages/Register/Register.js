@@ -6,7 +6,6 @@ import {useNavigate} from 'react-router-dom';
 import {toast} from 'react-toastify';
 import {register, reset} from '../../features/auth/authSlice';
 import Spinner from '../../components/Spinner/Spinner';
-import {Link} from 'react-router-dom';
 import './register.css';
 
 function Register() {
@@ -81,24 +80,39 @@ function Register() {
 
   return (
     <div className='outer'>
-      <div className="container grid">
+      <div className="container">
         <div className='left'>
-          <h1>Sign Up</h1>
+          <h1 className='title'>Skriva</h1>
           <form onSubmit={e => onSubmit(e)}>
-            <input className='firstName' type='text' value={firstName} name='firstName' onChange={e => onChange(e)}></input>
-            <input className='lastName' type='text' value={lastName} name='lastName' onChange={e => onChange(e)}></input>
-            <input className='userName' type='text' value={username} name='username' onChange={e => onChange(e)}></input>
-            <input className='email' type='text' value={email} name='email' onChange={e => onChange(e)}></input>
-            <input className='password1' type='text' value={password} name='password' onChange={e => onChange(e)}></input>
-            <input className='password2' type='text' value={password2} name='password2' onChange={e => onChange(e)}></input>
+            <input placeholder='  ' className='firstName' type='text' value={firstName} name='firstName' onChange={e => onChange(e)}></input>
+            <label className='firstName-lbl' htmlFor='firstName'>Firstname</label>
+
+            <input placeholder='  ' className='lastName' type='text' value={lastName} name='lastName' onChange={e => onChange(e)}></input>
+            <label className='lastName-lbl' htmlFor='lastName'>Lastname</label>
+
+            <input placeholder='  'className='userName' type='text' value={username} name='userName' onChange={e => onChange(e)}></input>
+            <label className='username-lbl' htmlFor='userName'>Username</label>
+
+
+            <input placeholder='  ' className='email' type='text' value={email} name='email' onChange={e => onChange(e)}></input>
+            <label className='email-lbl' htmlFor='email'>Email</label>
+
+
+            <input placeholder='  'className='password1' type='text' value={password} name='password' onChange={e => onChange(e)}></input>
+            <label className='password1-lbl' htmlFor='password1'>Password</label>
+
+
+            <input placeholder='  ' className='password2' type='text' value={password2} name='password2' onChange={e => onChange(e)}></input>
+            <label className='password2-lbl' htmlFor='password2'>Retype Password</label>
+            
             <input className='date-ofbirth' type="date" name="dateofbirth" id="dateofbirth"></input>
-            <button type='submit'>Register</button>
+            <div className='register-cont'><button className='register' type='submit'>Register</button></div>
           </form>
         </div>
         <div className="border">
         </div>
         <div className='right'>
-          <h1>Skriva</h1>
+          <h1>Sign Up</h1>
           <ul className='list'>
             <li className='item1'>
               Write what you desire
@@ -119,41 +133,6 @@ function Register() {
         </div>
       </div>
     </div>
-    /*
-    <div>
-      <form onSubmit={e => onSubmit(e)}>
-        <div>
-          <label>First Name:</label>
-          <input type='text' value={firstName} name='firstName' onChange={e => onChange(e)}/>
-        </div>
-        <div>
-          <label>Last Name:</label>
-          <input type='text' value={lastName} name='lastName' onChange={e => onChange(e)}/>
-        </div>
-        <div>
-          <label>Username:</label>
-          <input type='text' value={username} name='username' onChange={e => onChange(e)}/>
-        </div>
-        <div>
-          <label>Location:</label>
-          <input type='text' value={location} name='location' onChange={e => onChange(e)}/>
-        </div>
-        <div>
-          <label>Email:</label>
-          <input type='text' value={email} name='email' onChange={e => onChange(e)}/>
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type='text' value={password} name='password' onChange={e => onChange(e)}/>
-        </div>
-        <div>
-          <label>Password2:</label>
-          <input type='text' value={password2} name='password2' onChange={e => onChange(e)}/>
-        </div>
-        <button type='submit'>Register</button>
-      </form>
-      <p><Link to='/'>Homepage</Link> </p>
-    </div>*/
   )
 }
 export default Register;

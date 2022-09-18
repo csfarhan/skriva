@@ -6,6 +6,7 @@
     height: 850px;
     justify-content: center;
     align-items: center;
-    background-color: ;
-    border-radius: 25px;
+    background-color: #e36566;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }

@@ -1,0 +1,11 @@
+.openbook-cover{
+    position: relative;
+    display: flex;
+    right: -30px;
+    width: 600px;
+    height: 850px;
+    justify-content: center;
+    align-items: center;
+    background-color: ;
+    border-radius: 25px;
+}

@@ -10,6 +10,9 @@
     display: flex;
     gap: 10px;
     align-items: stretch;
+    color: aliceblue;
+    font-family: 'Lato';
+    font-style: normal;
 }
 
 .side-nav{
@@ -25,8 +28,59 @@
 
 .user-icon-profile{
     position: relative;
-    order: 2;
+    display: flex;
+    gap: 40px;
+    order: 0;
     top: 33px;
+}
+
+.books-prof{
+    order: 1;
+    font-size: 23px;
+    display: flex;
+    gap: 5px;
+}
+
+.book-shelf-lbl{
+    position: relative;
+    top: 50px;
+    margin-right: 10px;
+}
+
+.book-shelf{
+    display: flex;
+    gap:5px;
+    margin-left: 10px;
+    z-index: 10;
+}
+
+.profile-container{
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.profile-shelf{
+    position: relative;
+    order: 3;
+    top: -59px;
+    left: 100px;
+}
+
+.displayed-book{
+    position: relative;
+    margin-left: 120px;
+    top: 50px;
+    order: 3;
+}
+
+.name-prof{
+    font-size: 50px;
+}
+
+.bio-prof{
+    font-size: 20px;
 }
 
 .demoText{

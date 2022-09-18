@@ -1,0 +1,12 @@
+:root{
+    --blackish: #2c2c34 ;
+    --pinkish: #9a87ab;
+    --whitish: #EBC3DB;
+    --whitish-blue: #D8d8f6;
+}
+
+.page-body{
+    background-color: var(--whitish-blue);
+    width: 550px;
+    height: 800px;
+}
